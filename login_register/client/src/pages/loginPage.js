@@ -75,7 +75,7 @@ export function loginPage() {
               // Login exitoso, redirigir al dashboard o guardar el token JWT
               localStorage.setItem('token', data.token);
               console.log('Login exitoso');
-              window.location.href = '/';
+              window.location.href = 'http://localhost:5173/form';
           } else {
               alert('Login fallido: ' + data.message);
           }

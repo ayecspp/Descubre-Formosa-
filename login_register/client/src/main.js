@@ -1,7 +1,7 @@
 import '../Style/tailwind.css';
 import { loginPage } from './pages/loginPage.js';
 import { registerPage } from './pages/registerPage.js';
-import {formPage} from './pages/formPage.js';
+import { formPage } from './pages/formPage.js';
 
 const pathname = window.location.pathname;
 
