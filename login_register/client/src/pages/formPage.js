@@ -39,15 +39,14 @@ export function formPage() {
     // Añade clases de Tailwind para centrar el contenedor
     $container.classList.add('min-h-screen', 'flex', 'items-center', 'justify-center', 'bg-yellow-50');
   
-    // Añade lógica para seleccionar múltiples botones
+    // Añade lógica para seleccionar múltiples botones con borde
     const buttons = $container.querySelectorAll('button[id]');
     buttons.forEach(button => {
       button.addEventListener('click', () => {
-        button.classList.toggle('bg-blue-200'); // Cambia el color para marcar el botón como seleccionado
-        button.classList.toggle('bg-yellow-100');   // Alterna entre el color seleccionado y no seleccionado
+        button.classList.toggle('border-4'); // Añade un borde de 4px
+        button.classList.toggle('border-yellow-400'); // Color del borde cuando está seleccionado
       });
     });
   
     return $container;
-  }
-  
+}
