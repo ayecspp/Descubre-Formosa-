@@ -29,23 +29,61 @@ export function formPage() {
           </div>
           
           <div class="mt-6 flex justify-center">
-              <button class="w-full bg-yellow-400 text-yellow-800 font-semibold py-3 rounded-lg focus:outline-none hover:opacity-90">
+              <button id="next-btn" class="w-full bg-yellow-400 text-yellow-800 font-semibold py-3 rounded-lg focus:outline-none hover:opacity-90">
                   Siguiente
               </button>
           </div>
       </div>
     `;
   
-    // Añade clases de Tailwind para centrar el contenedor
     $container.classList.add('min-h-screen', 'flex', 'items-center', 'justify-center', 'bg-yellow-50');
   
-    // Añade lógica para seleccionar múltiples botones con borde
     const buttons = $container.querySelectorAll('button[id]');
+    const selectedOptions = new Set(); // Para almacenar las selecciones del usuario
+    
+    // Añadir lógica para marcar los botones seleccionados y almacenar nombres de roles
     buttons.forEach(button => {
       button.addEventListener('click', () => {
-        button.classList.toggle('border-4'); // Añade un borde de 4px
-        button.classList.toggle('border-yellow-400'); // Color del borde cuando está seleccionado
+        const optionId = button.id;
+        let roleName = '';
+
+        // Asignar nombres de roles más amigables según el botón
+        switch(optionId) {
+          case 'interactive-map':
+            roleName = 'Mapa Interactivo';
+            break;
+          case 'art-media':
+            roleName = 'Arte y Medios';
+            break;
+          case 'audio':
+            roleName = 'Audio';
+            break;
+          case 'all':
+            roleName = 'De todo un poco';
+            break;
+        }
+
+        button.classList.toggle('border-4');
+        button.classList.toggle('border-yellow-400');
+        
+        // Añadir o remover del set de opciones seleccionadas
+        if (selectedOptions.has(roleName)) {
+          selectedOptions.delete(roleName);
+        } else {
+          selectedOptions.add(roleName);
+        }
       });
+    });
+  
+    // Al hacer clic en "Siguiente", almacenar las selecciones y redirigir
+    const nextBtn = $container.querySelector('#next-btn');
+    nextBtn.addEventListener('click', () => {
+      // Guardar las selecciones en localStorage
+      localStorage.setItem('userSelections', JSON.stringify(Array.from(selectedOptions)));
+      
+      // Redirigir o cargar la página colaboratorPage
+      // Esto depende de cómo estés manejando la navegación
+      window.location.href = 'http://localhost:5173/colaborator'; // Ruta de colaboratorPage
     });
   
     return $container;

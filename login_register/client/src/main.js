@@ -2,7 +2,7 @@ import '../Style/tailwind.css';
 import { loginPage } from './pages/loginPage.js';
 import { registerPage } from './pages/registerPage.js';
 import { formPage } from './pages/formPage.js';
-import { createPage } from './pages/createPage.js';
+import { colaboratorPage } from './pages/colaboratorPage.js';
 
 const pathname = window.location.pathname;
 
@@ -17,8 +17,8 @@ switch (pathname) {
     case '/form':
         $app.appendChild(formPage());
         break;
-    case '/create':
-        $app.appendChild(createPage());
+    case '/colaborator':
+        $app.appendChild(colaboratorPage());
         break;
     default:
         break;
