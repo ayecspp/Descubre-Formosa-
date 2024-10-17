@@ -82,7 +82,6 @@ export function formPage() {
       localStorage.setItem('userSelections', JSON.stringify(Array.from(selectedOptions)));
       
       // Redirigir o cargar la página colaboratorPage
-      // Esto depende de cómo estés manejando la navegación
       window.location.href = 'http://localhost:5173/colaborator'; // Ruta de colaboratorPage
     });
   
